@@ -1,0 +1,37 @@
+[production]
+
+; ------------------------------------------------------------
+; Emails
+; ------------------------------------------------------------
+email.sysadmins.name = 'Admins Empreendemia'
+email.sysadmins.address = 'testes+sysadmins@empreendemia.com.br'
+
+email.contact.name = 'Contato Empreendemia'
+email.contact.address = 'testes+contato@empreendemia.com.br'
+
+email.customer.name = 'Atendimento Empreendemia'
+email.customer.address = 'testes+atendimento@empreendemia.com.br'
+
+email.noreply.name = 'Empreendemia'
+email.noreply.address = 'testes+no-reply@empreendemia.com.br'
+
+; ------------------------------------------------------------
+; Security
+; ------------------------------------------------------------
+security.pwdsalt = 'DigiteQualquerHashAleatorio'
+
+; ------------------------------------------------------------
+; Logins
+; ------------------------------------------------------------
+login.sendgrid.user = 'user'
+login.sendgrid.password = 'password'
+
+; ------------------------------------------------------------
+; Files
+; ------------------------------------------------------------
+files.salt = 'kawasaLUVS3mpr33nd3f1l3s'
+files.urlpath = 'userfiles/'
+files.filepath = APPLICATION_PATH "/../public/userfiles/"
+files.temp = APPLICATION_PATH "/../public/userfiles/temp/"
+
+files.metrics = APPLICATION_PATH "/../../files/metrics/"

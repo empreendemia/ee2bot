@@ -1,0 +1,31 @@
+<?php
+/**
+ * premiums_expirations.phtml
+ * Email enviado para sysadmins com lista de premiums expirados
+ * 
+ * @author Mauro Ribeiro
+ * @since 2011-09-06
+ */
+?>
+<h1>Cron Diário - Premiums expirando daqui 2 dias</h1>
+
+<p>Emails enviado para:</p>
+
+<?php if ($this->companies) : ?>
+<ul>
+    <?php foreach ($this->companies as $company) : ?>
+    <li>
+        <a href="http://www.empreendemia.com.br/e/<?php echo $company->slug ?>" style="font-weight:bold"><?php echo $company->name ?></a>
+        <ul>
+            <li>id: <?php echo $company->id ?></li>
+            <?php foreach ($company->users as $user) : ?>
+            <li><a href="http://www.empreendemia.com.br/e/<?php echo $company->slug ?>/pessoas/<?php echo $user->id ?>"><?php echo $user->name ?> <?php echo $user->family_name ?></a> - <?php echo $user->login ?></li>
+            <?php endforeach ?>
+        </ul>
+        <br />
+    </li>
+    <?php endforeach ?>
+</ul>
+<?php else : ?>
+<p>nenhum</p>
+<?php endif ?>

@@ -1,0 +1,38 @@
+[production]
+; ------------------------------------------------------------
+; Voce precisa editar aqui
+; ------------------------------------------------------------
+resources.db.params.host = "host"
+resources.db.params.username = "username"
+resources.db.params.password = "password"
+resources.db.params.dbname = "dbname"
+
+; ------------------------------------------------------------
+; Voce pode editar aqui
+; ------------------------------------------------------------
+phpSettings.display_startup_errors = 1
+phpSettings.display_errors = 1
+
+; ------------------------------------------------------------
+; Voce nao precisa editar a partir daqui
+; ------------------------------------------------------------
+includePaths.library = APPLICATION_PATH "/../library"
+bootstrap.path = APPLICATION_PATH "/Bootstrap.php"
+bootstrap.class = "Bootstrap"
+appnamespace = "EeBot"
+resources.frontController.controllerDirectory = APPLICATION_PATH "/controllers"
+resources.frontController.params.displayExceptions = 1
+resources.layout.layoutPath = APPLICATION_PATH "/layouts/scripts"
+resources.view[] =
+
+resources.db.adapter = "pdo_mysql"
+resources.db.params.charset = "utf8"
+
+resources.layout.layoutPath = APPLICATION_PATH "/layouts/scripts/"
+
+[staging : production]
+
+[testing : production]
+
+[development : production]
+

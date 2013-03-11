@@ -1,0 +1,84 @@
+<h1>Empresas de Sr. Wilson</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID Empresa</th>
+            <th>Nome</th>
+            <th>Nome'</th>
+            <th>Atividade</th>
+            <th>Atividade'</th>
+            <th>Descrição</th>
+            <th>Descrição'</th>
+            <th>Sobre</th>
+            <th>Sobre'</th>
+        </tr>
+    </thead>
+<?php foreach ($this->companies as $id => $company) : ?>
+    <tr>
+        <td><?php echo $company->id ?></td>
+        <td><?php echo $company->name ?></td>
+        <td><?php echo $this->fixed_companies[$id]->name ?></td>
+        <td><?php echo $company->activity ?></td>
+        <td><?php echo $this->fixed_companies[$id]->activity ?></td>
+        <td><?php echo $company->description ?></td>
+        <td><?php echo $this->fixed_companies[$id]->description ?></td>
+        <td><?php echo $company->about ?></td>
+        <td><?php echo $this->fixed_companies[$id]->about ?></td>
+    </tr>
+<?php endforeach ?>
+</table>
+
+<h1>Usuários Sr. Wilson</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID Usuário</th>
+            <th>Nome</th>
+            <th>Nome'</th>
+            <th>Cargo</th>
+            <th>Cargo'</th>
+            <th>Descrição</th>
+            <th>Descrição'</th>
+        </tr>
+    </thead>
+<?php foreach ($this->users as $id => $user) : ?>
+    <tr>
+        <td><?php echo $user->id ?></td>
+        <td><?php echo $user->name ?> <?php echo $user->family_name ?></td>
+        <td><?php echo $this->fixed_users[$id]->name ?> <?php echo $this->fixed_users[$id]->family_name ?></td>
+        <td><?php echo $user->job ?></td>
+        <td><?php echo $this->fixed_users[$id]->job ?></td>
+        <td><?php echo $user->description ?></td>
+        <td><?php echo $this->fixed_users[$id]->description ?></td>
+    </tr>
+<?php endforeach ?>
+</table>
+
+<h1>Produtos de Sr. Wilson</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID Produto</th>
+            <th>Nome</th>
+            <th>Nome'</th>
+            <th>Descrição</th>
+            <th>Descrição'</th>
+            <th>Sobre</th>
+            <th>Sobre'</th>
+        </tr>
+    </thead>
+<?php foreach ($this->products as $id => $product) : ?>
+    <tr>
+        <td><?php echo $product->id ?></td>
+        <td><?php echo $product->name ?></td>
+        <td><?php echo $this->fixed_products[$id]->name ?></td>
+        <td><?php echo $product->description ?></td>
+        <td><?php echo $this->fixed_products[$id]->description ?></td>
+        <td><?php echo $product->about ?></td>
+        <td><?php echo $this->fixed_products[$id]->about ?></td>
+    </tr>
+<?php endforeach ?>
+</table>

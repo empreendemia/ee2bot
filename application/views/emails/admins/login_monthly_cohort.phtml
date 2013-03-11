@@ -1,0 +1,19 @@
+<?php
+/**
+ * login_monthly_cohort.phtml
+ * Email enviado para sysadmins com cohort mensal
+ * 
+ * @author Mauro Ribeiro
+ */
+?>
+<h1>Cron Mensal- Cohort de Login</h1>
+
+<table>
+<?php foreach ($this->cohort as $row) : ?>
+    <tr>
+    <?php foreach ($row as $data) : ?>
+        <td><?php echo $data ?></td>
+    <?php endforeach ?>
+    </tr>
+<?php endforeach ?>
+</table>

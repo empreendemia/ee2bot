@@ -1,0 +1,31 @@
+<?php
+/**
+ * offers_expirations.phtml
+ * Email enviado para sysadmins com lista de ofertas expiradas
+ * 
+ * @author Mauro Ribeiro
+ * @since 2011-09-06
+ */
+?>
+<h1>Cron Diário - Expiração de Ofertas</h1>
+
+<p>Ofertas que expiraram hoje:</p>
+
+<?php if ($this->products) : ?>
+<ul>
+    <?php foreach ($this->products as $product) : ?>
+    <li>
+        <a href="http://www.empreendemia.com.br/e/<?php echo $product->company->slug ?>/produtos/<?php echo $product->slug ?>" style="font-weight:bold"><?php echo $product->name ?></a>
+        <ul>
+            <li>id: <?php echo $product->id ?></li>
+            <?php foreach ($product->company->users as $user) : ?>
+            <li><a href="http://www.empreendemia.com.br/e/<?php echo $product->company->slug ?>/pessoas/<?php echo $user->id ?>"><?php echo $user->name ?> <?php echo $user->family_name ?></a> - <?php echo $user->login ?></li>
+            <?php endforeach ?>
+        </ul>
+        <br />
+    </li>
+    <?php endforeach ?>
+</ul>
+<?php else : ?>
+<p>nenhum</p>
+<?php endif ?>

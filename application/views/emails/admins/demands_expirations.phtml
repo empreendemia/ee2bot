@@ -1,0 +1,31 @@
+<?php
+/**
+ * demands_expirations.phtml
+ * Email enviado para sysadmins com lista de requisição de seviços expiradas
+ * 
+ * @author Mauro Ribeiro
+ * @since 2011-09-06
+ */
+?>
+<h1>Cron Diário - Expiração de Serviços</h1>
+
+<p>Serviços que expiraram hoje:</p>
+
+<?php if ($this->demands) : ?>
+<ul>
+    <?php foreach ($this->demands as $demand) : ?>
+    <li>
+        <a href="http://www.empreendemia.com.br/quero-vender/servicos/<?php echo $demand->slug ?>" style="font-weight:bold"><?php echo $demand->title ?></a>
+        <ul>
+            <li>id: <?php echo $demand->id ?></li>
+            <li>empresa: <a href="http://www.empreendemia.com.br/qe/<?php echo $demand->company->slug ?>"><?php echo $demand->company->name ?></a></li>
+            <?php $user = $demand->user ?>
+            <li><a href="http://www.empreendemia.com.br/e/<?php echo $product->company->slug ?>/pessoas/<?php echo $user->id ?>"><?php echo $user->name ?> <?php echo $user->family_name ?></a> - <?php echo $user->login ?></li>
+        </ul>
+        <br />
+    </li>
+    <?php endforeach ?>
+</ul>
+<?php else : ?>
+<p>nenhum</p>
+<?php endif ?>

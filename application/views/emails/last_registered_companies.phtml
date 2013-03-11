@@ -1,0 +1,39 @@
+<?php
+/**
+ * last_registered_companies.phtml
+ * 
+ * E-mail com lista de novas empresas na cidade do usuário.
+ * 
+ * @author Mauro Ribeiro
+ * @since 2011-03-05
+ */
+
+/* Caminho da função de autoLogin, links e tag */
+require_once APPLICATION_PATH."/views/helpers/Access.php";
+$url = 'lista-de-empresas/'.$this->user->company->city->region->slug.'/'.$this->user->company->city->slug;
+$utm = '?utm_source=lifecycle&utm_medium=email&utm_campaign='.urlencode('lista de novas empresas '.$this->user->company->city->slug);
+?>
+
+<p>Oi, <?php echo $this->user->name ?>. Tudo bem?</p>
+
+<p>Vimos que você não loga no Empreendemia há mais de um mês.</p>
+
+<p>Como estamos sentindo saudades e gostaríamos muito que você voltasse para a rede, decidimos te indicar algumas empresas de <?php echo $this->user->company->city->name ?> que podem te interessar.</p>
+
+<p>Para conferir as empresas que se cadastraram na rede no período em que você esteve fora, clique <a href="<?php echo $this->Access()->autoLoginLink($this->user, $url).$utm ?>">aqui</a></p>
+
+<p>Abração,<br /> <br />
+
+Millor<br />
+(torcendo para que você consiga excelentes contatos  da sua cidade)<br />
+</p>
+
+<div style="font-family:Verdana,sans-serif;color:#666;text-shadow:1px 1px 0 #fff;font-size:10px;border-top:1px dotted #888;margin-top:20px;margin-bottom:20px">
+	<div style="margin-top:20px"><a href="http://www.google.com/url?q=http%3A%2F%2Fempreendemia.com.br%2Fe%2Fempreendemia%2Fpessoas%2F19112010&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNFRecW27X3GEhD-9EoaM0BSO6IfQg" target="_blank"><img style="height:80px;width:80px;float:left" src="http://empreendemia.com.br/userfiles/users/19112/191120103bb9d59a2bf98bf7d8358784b705dc8bd7f19929/200_thumbnail.jpg"></a></div>
+	<div style="margin-left:100px;margin-top:20px;color:#0c478b;font-size:20px;font-family:Arial,Helvetica,sans-serif;margin-bottom:2px"><a href="http://www.google.com/url?q=http%3A%2F%2Fempreendemia.com.br%2Fe%2Fempreendemia%2Fpessoas%2F19112010&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNFRecW27X3GEhD-9EoaM0BSO6IfQg" style="color:#0c478b;text-decoration:none" target="_blank">Millor Machado</a></div>
+	<div style="margin-left:100px;font-size:12px;font-family:Arial,Helvetica,sans-serif;font-weight:bold;margin-bottom:8px">Diretor de estratégia para a desenrolação do empreendedorismo brasileiro</div>
+	<div style="margin-left:100px;margin-bottom:5px">Escritório: (11) 3230-9233</div>
+	<div style="margin-top:30px;margin-bottom:5px"><a href="http://www.google.com/url?q=http%3A%2F%2Fwww.empreendemia.com.br&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNEOHUWi5cAicdE_YNDRultw-a6Kaw" style="text-decoration:none;color:#666;font-weight:bold" target="_blank"><img src="http://empreendemia.com.br/images/favicon.ico" style="vertical-align:middle"> empreendemia.com.br</a> - a rede de empresas para acelerar seus negócios</div>
+	<div style="margin-bottom:20px"><a href="http://www.google.com/url?q=http%3A%2F%2Fwww.saiadolugar.com.br&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNGESYz86os7gWVbNW448QdbFF-3iA" style="text-decoration:none;color:#666;font-weight:bold" target="_blank"><img src="http://www.saiadolugar.com.br/wp-content/themes/saiadolugar4/images/favicon.ico" style="vertical-align:middle"> saiadolugar.com.br</a> - dicas para o empreendedor que não tem tempo a perder</div>
+	<div style="color:#888"><span style="font-style:italic">&quot;Minha vida é um livro abertis!&quot;</span> - Antônio Carlos Bernardes Gomes</div>
+</div></body></html>
