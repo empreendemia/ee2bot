@@ -19,8 +19,8 @@ class EeBot_Controller_Helper_EeMsg extends Zend_Controller_Action_Helper_Abstra
      * @author Mauro Ribeiro
      */
     private function sendEmail($mail, $category = false) {
-        if(strpos($_SERVER["SERVER_NAME"], 'empreendemia.com.br') !== false) {
-            $config = new Zend_Config_Ini(APPLICATION_PATH . '/configs/ee.ini','production');
+        $config = new Zend_Config_Ini(APPLICATION_PATH . '/configs/ee.ini','production');
+        if($config->login->sendgrid->user && $config->login->sendgrid->user != '' && $config->login->sendgrid->password && $config->login->sendgrid->password != '') {
             $login = array(
                 'auth' => 'login',
                 'username' => $config->login->sendgrid->user,
@@ -100,7 +100,7 @@ class EeBot_Controller_Helper_EeMsg extends Zend_Controller_Action_Helper_Abstra
         $mail->setReplyTo($config->email->noreply->address, $config->email->noreply->name);
         $mail->addTo($config->email->sysadmins->address, $config->email->sysadmins->name);
         $mail->setSubject('[Empreendemia] '.$subject);
-        return $mail->send();
+        return $this->sendEmail($mail, 'sysadmins');
     }
 
     /**
