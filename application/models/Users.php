@@ -339,7 +339,7 @@ class EeBot_Model_Users
         // abre
         $row = 1;
         $cohort = array();
-        $handle = fopen($metrics_folder.'cohort.csv', 'r');
+        $handle = fopen($metrics_folder.'/cohort.csv', 'r');
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
             $cohort[] = $data;
         }
@@ -356,8 +356,7 @@ class EeBot_Model_Users
             // para cada ano e mês (YYYY-MM) 
             for ($i = 1; $i < $num; $i++) {
                 $date_created_min = $cohort[$i][0].'-01';
-                $date_created_max = $cohort[$i][0].'-31';
-                
+                $date_created_max = $cohort[$i][0].'-31';                
                 // pessoas que logaram no último mês e que se cadastraram num
                 // mês específico (YYYY-MM-01 a YYYY-MM-31)
                 $select = $this->_dbTable
