@@ -106,7 +106,7 @@ class CronDiaryController extends Zend_Controller_Action
             }
         }
         
-        die();
+        die('loggedInFifteenDaysAgo');
     }
 
     /**
@@ -131,7 +131,7 @@ class CronDiaryController extends Zend_Controller_Action
             }
         }
         
-        die();
+        die('loggedInOneMonthAgo');
     }
     
     /**
@@ -151,7 +151,7 @@ class CronDiaryController extends Zend_Controller_Action
             }
         }
         
-        die();
+        die('signedUpFifteenDaysAgo');
     }
 
     /**
@@ -168,9 +168,11 @@ class CronDiaryController extends Zend_Controller_Action
             $company->users = $user_mapper->findByCompany($company);
         }
         
-        $sent = $this->_helper->EeMsg->adminPremiumsExpirations($companies);
+        if ($companies) {
+            $this->_helper->EeMsg->adminPremiumsExpirations($companies);
+        }
 
-        die();
+        die('premiumsExpirations');
     }
     
     
@@ -190,9 +192,11 @@ class CronDiaryController extends Zend_Controller_Action
             $this->_helper->EeMsg->expiringPremium($company->users[0]);
         }
         
-        $this->_helper->EeMsg->adminExpiringPremiums($companies);
+        if ($companies) {
+            $this->_helper->EeMsg->adminExpiringPremiums($companies);
+        }
 
-        die();
+        die('expiringPremiums');
     }
 
 
@@ -212,10 +216,12 @@ class CronDiaryController extends Zend_Controller_Action
             $product->company = $company_mapper->find($product->company_id);
             $product->company->users = $user_mapper->findByCompany($product->company);
         }
+        
+        if ($products) {
+            $this->_helper->EeMsg->offersExpirations($products);
+        }
 
-        $sent = $this->_helper->EeMsg->offersExpirations($products);
-
-        die();
+        die('offersExpirations');
     }
 
     /**
@@ -237,9 +243,11 @@ class CronDiaryController extends Zend_Controller_Action
             $ad->product->company->users = $user_mapper->findByCompany($ad->product->company);
         }
 
-        $sent = $this->_helper->EeMsg->adsExpirations($ads);
+        if ($ads) {
+            $this->_helper->EeMsg->adsExpirations($ads);
+        }
 
-        die();
+        die('adsExpirations');
     }
 
     /**
@@ -260,9 +268,11 @@ class CronDiaryController extends Zend_Controller_Action
             $demand->company->user = $user;
         }
 
-        $sent = $this->_helper->EeMsg->demandsExpirations($demands);
+        if ($demands) {
+            $this->_helper->EeMsg->demandsExpirations($demands);
+        }
 
-        die();
+        die('demandsExpirations');
     }
 
     /**
@@ -274,6 +284,6 @@ class CronDiaryController extends Zend_Controller_Action
     {
         $company_mapper = new EeBot_Model_Companies();
         $company_mapper->updateSearch();
-        die();
+        die('updateCompaniesSearch');
     }
 }

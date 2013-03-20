@@ -57,7 +57,7 @@ class CronWeeklyController extends Zend_Controller_Action
             }
         }
         
-        die();
+        die('exchangedCardsInFifteenDaysAgo');
     }
     
 }

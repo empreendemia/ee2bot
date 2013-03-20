@@ -45,7 +45,7 @@ class CronMonthlyController extends Zend_Controller_Action
 
         $sent = $this->_helper->EeMsg->loginMonthlyCohort($cohort);
         
-        die();
+        die('loginCohort');
     }
 
 }
