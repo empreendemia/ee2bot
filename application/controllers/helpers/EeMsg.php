@@ -326,6 +326,31 @@ class EeBot_Controller_Helper_EeMsg extends Zend_Controller_Action_Helper_Abstra
 
 
     /**
+     * Envia email para usuários sobre o fim da campanha.
+     * 
+     * @param EeBot_Model_Data_Ad $ad    anúncio expirado
+     * @author Mauro Ribeiro
+     */
+    public function adExpiration($user, $ad) {
+        $view->user = $user;
+        $view->ad = $ad;
+        $render = $this->_render('ad_expiration', $view);
+        $subject = 'Relatório da sua campanha de publicidade - Empreendemia';
+
+        $mail = new Zend_Mail('utf-8');
+        $mail->setBodyHtml($render);
+        $mail->setFrom("millor@empreendemia.com.br", "Millor Machado");
+        $mail->setReplyTo("millor@empreendemia.com.br", "Millor Machado");
+        $mail->addTo($user->login, $user->name.' '.$user->family_name);
+        $mail->addBcc("millor@empreendemia.com.br", "Millor Machado");
+        $mail->setSubject($subject);
+        
+        // envia o email
+        return $this->sendEmail($mail, 'ad expiration');
+    }
+
+
+    /**
      * Envia email para sysadmins com lista de requisições de serviços expiradas.
      * 
      * @param array(EeBot_Model_Data_Demand) $demands

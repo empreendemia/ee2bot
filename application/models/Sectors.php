@@ -40,7 +40,7 @@ class EeBot_Model_Sectors
             return;
         }
 
-        $sector = new Ee_Model_Data_Sector($result->current());
+        $sector = new EeBot_Model_Data_Sector($result->current());
         return $sector;
     }
 

@@ -22,7 +22,7 @@ class CronDiaryController extends Zend_Controller_Action
 		  $ip = $_SERVER['REMOTE_ADDR'];
 		}
 
-        if (strpos($ip, '192.168.33') === false && $ip != '127.0.0.1' && $ip != '74.200.74.193') {
+        if (strpos($ip, '192.168.0') === false && $ip != '127.0.0.1' && $ip != '74.200.74.193') {
             $this->_redirect('http://www.empreendemia.com.br');
         }
     }
@@ -241,6 +241,11 @@ class CronDiaryController extends Zend_Controller_Action
             $ad->product = $product_mapper->find($ad->product_id);
             $ad->product->company = $company_mapper->find($ad->product->company_id);
             $ad->product->company->users = $user_mapper->findByCompany($ad->product->company);
+            $ad->cities = $ad_mapper->cities($ad->id);
+            $ad->sectors = $ad_mapper->sectors($ad->id);
+            foreach ($ad->product->company->users as $user) {
+                $this->_helper->EeMsg->adExpiration($user, $ad);
+            }
         }
 
         if ($ads) {

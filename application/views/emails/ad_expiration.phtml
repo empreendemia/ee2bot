@@ -1,0 +1,62 @@
+<?php
+/**
+ * ad_expiration.phtml
+ * Envia email para usuários sobre o fim da campanha.
+ * 
+ * @author Mauro Ribeiro
+ * @since 2013-06-25
+ */
+
+$totalViews = 0;
+$totalClicks = 0;
+$sectors = '';
+$cities = '';
+
+foreach ($this->ad->sectors as $sector) {
+    $totalViews += $sector->views;
+    $totalClicks += $sector->clicks;
+}
+
+
+?>
+<p>Olá <?php echo $this->user->name ?>, tudo bem?</p>
+
+<p>Segue abaixo o relatório da sua campanha de publicidade no Empreendemia.</p>
+
+<p>O seu anúncio teve <?php echo $totalViews ?> visualizações e <?php echo $totalClicks ?> cliques.</p>
+<p>Destaque para os setores:
+    <ul>
+        <?php for ($i = 0; $i < 4 && $i < count($this->ad->sectors); $i++) : ?>
+        <li>
+            <?php echo $this->ad->sectors[$i]->sector->name ?>
+        </li>
+        <?php endfor ?>
+    </ul>
+</p>
+
+<p>Destaque para as cidades:
+    <ul>
+        <?php for ($i = 0; $i < 4 && $i < count($this->ad->cities); $i++) : ?>
+        <li>
+            <?php echo $this->ad->cities[$i]->city->name ?>, <?php echo $this->ad->cities[$i]->city->region->symbol ?>
+        </li>
+        <?php endfor ?>
+    </ul>
+</p>
+
+<p>O que achou dos números? Eles refletiram em negócios?</p>
+
+<p>Se quiser reconfigurar uma nova campanha, clique aqui.</p>
+
+<p>Abraços,<br />
+Millor</p>
+
+<div style="font-family:Verdana,sans-serif;color:#666;text-shadow:1px 1px 0 #fff;font-size:10px;border-top:1px dotted #888;margin-top:20px;margin-bottom:20px">
+	<div style="margin-top:20px"><a href="http://www.empreendemia.com.br" target="_blank"><img style="height:80px;width:80px;float:left" src="http://files.empreendemia.com.br.s3-sa-east-1.amazonaws.com/users/19112/191120103bb9d59a2bf98bf7d8358784b705dc8bd7f19929/100_thumbnail.jpg"></a></div>
+	<div style="margin-left:100px;margin-top:20px;color:#0c478b;font-size:20px;font-family:Arial,Helvetica,sans-serif;margin-bottom:2px"><a href="http://www.saiadolugar.com.br" style="color:#0c478b;text-decoration:none" target="_blank">Millor Machado</a></div>
+	<div style="margin-left:100px;font-size:12px;font-family:Arial,Helvetica,sans-serif;font-weight:bold;margin-bottom:8px">Diretor de estratégia para a desenrolação do empreendedorismo brasileiro</div>
+	<div style="margin-left:100px;margin-bottom:5px">Escritório: (11) 3230-9233</div>
+	<div style="margin-top:30px;margin-bottom:5px"><a href="http://www.empreendemia.com.br" style="text-decoration:none;color:#666;font-weight:bold" target="_blank"><img src="http://empreendemia.com.br/images/favicon.ico" style="vertical-align:middle"> empreendemia.com.br</a> - a rede de empresas para acelerar seus negócios</div>
+	<div style="margin-bottom:20px"><a href="http://www.saiadolugar.com.br/" style="text-decoration:none;color:#666;font-weight:bold" target="_blank"><img src="http://www.saiadolugar.com.br/wp-content/themes/saiadolugar4/images/favicon.ico" style="vertical-align:middle"> saiadolugar.com.br</a> - dicas para o empreendedor que não tem tempo a perder</div>
+	<div style="color:#888"><span style="font-style:italic">&quot;Minha vida é um livro abertis!&quot;</span> - Antônio Carlos Bernardes Gomes</div>
+</div></body></html>

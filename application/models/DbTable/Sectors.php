@@ -1,6 +1,6 @@
 <?php
 
-class Ee_Model_DbTable_Sector extends Zend_Db_Table_Abstract
+class EeBot_Model_DbTable_Sectors extends Zend_Db_Table_Abstract
 {
 
     protected $_name = 'sectors';
