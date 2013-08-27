@@ -47,7 +47,7 @@ class EeBot_Model_Ads
             $data,
             array(
                 'status = ?' => 'active',
-                'date_deadline < NOW()'
+                'date_deadline < CURDATE()'
             )
         );
 

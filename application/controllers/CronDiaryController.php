@@ -237,19 +237,18 @@ class CronDiaryController extends Zend_Controller_Action
         $ad_mapper = new EeBot_Model_Ads();
         $ads = $ad_mapper->expirations();
 
-        foreach ($ads as $ad) {
-            $ad->product = $product_mapper->find($ad->product_id);
-            $ad->product->company = $company_mapper->find($ad->product->company_id);
-            $ad->product->company->users = $user_mapper->findByCompany($ad->product->company);
-            $ad->cities = $ad_mapper->cities($ad->id);
-            $ad->sectors = $ad_mapper->sectors($ad->id);
-            foreach ($ad->product->company->users as $user) {
-                $this->_helper->EeMsg->adExpiration($user, $ad);
-            }
-        }
-
         if ($ads) {
             $this->_helper->EeMsg->adsExpirations($ads);
+            foreach ($ads as $ad) {
+                $ad->product = $product_mapper->find($ad->product_id);
+                $ad->product->company = $company_mapper->find($ad->product->company_id);
+                $ad->product->company->users = $user_mapper->findByCompany($ad->product->company);
+                $ad->cities = $ad_mapper->cities($ad->id);
+                $ad->sectors = $ad_mapper->sectors($ad->id);
+                foreach ($ad->product->company->users as $user) {
+                    $this->_helper->EeMsg->adExpiration($user, $ad);
+                }
+            }
         }
 
         die('adsExpirations');
