@@ -389,7 +389,7 @@ class EeBot_Model_Users
         $cohort[] = $new_row;
 
         // salva
-        $handle = fopen($metrics_folder.'cohort.csv', 'w');
+        $handle = fopen($metrics_folder.'/cohort.csv', 'w');
 
         $csv = array();
         foreach ($cohort as $id => $row) {

@@ -286,8 +286,8 @@ class EeBot_Controller_Helper_EeMsg extends Zend_Controller_Action_Helper_Abstra
 
         $mail = new Zend_Mail('utf-8');
         $mail->setBodyHtml($render);
-        $mail->setFrom("lucas@empreendemia.com.br", "Lucas Hoogerbrugge");
-        $mail->setReplyTo("lucas@empreendemia.com.br", "Lucas Hoogerbrugge");
+        $mail->setFrom("millor@empreendemia.com.br", "Millor Machado");
+        $mail->setReplyTo("millor@empreendemia.com.br", "Millor Machado");
         $mail->addTo($user->login, $user->name.' '.$user->family_name);
         $mail->setSubject($subject);
         
@@ -344,7 +344,7 @@ class EeBot_Controller_Helper_EeMsg extends Zend_Controller_Action_Helper_Abstra
         $mail->addTo($user->login, $user->name.' '.$user->family_name);
         $mail->addBcc("millor@empreendemia.com.br", "Millor Machado");
         $mail->setSubject($subject);
-        
+
         // envia o email
         return $this->sendEmail($mail, 'ad expiration');
     }
